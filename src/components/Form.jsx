@@ -1,11 +1,12 @@
 import React from 'react';
+import FormRow from './FormRow';
 
-const Form = () => {
+const form = () => {
     return (
         <div>
-            <h1>Form Component</h1>
+            <FormRow/>
         </div>
     );
 };
 
-export default Form;
+export default form;
