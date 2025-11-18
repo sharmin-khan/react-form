@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function FormRow() {
+export default function FormRow({deleteRow,row}) {
 
   const [developer, setDeveloper]=useState();
 
@@ -19,7 +19,7 @@ export default function FormRow() {
             <option value="Backend Developer">Backend Developer</option>
             <option value="MERN Developer">MERN Developer</option>
         </select>
-        <button className='bg-red-500 text-white px-3 py-1 rounded cursor-pointer'>Delete</button>
+        <button type='button' onClick={()=>deleteRow(row.id)} className='bg-red-500 text-white px-3 py-1 my-2 rounded cursor-pointer'>Delete</button>
     </div>
   )
 }
