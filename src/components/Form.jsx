@@ -20,12 +20,12 @@ const Form = () => {
           <button
           type="button"
           onClick={addRow}
-          className="bg-green-500 text-white px-3 py-1 rounded mt-2">
+          className="bg-green-500 text-white px-3 py-1 rounded mt-2 cursor-pointer">
             +
           </button>
            <button
           type="submit"
-          className="bg-blue-500 text-white px-3 py-1 rounded mt-2 ml-2"
+          className="bg-blue-500 text-white px-3 py-1 rounded mt-2 ml-2 cursor-pointer"
         >
           Submit
         </button>
