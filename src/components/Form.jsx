@@ -7,7 +7,7 @@ const Form = () => {
   const [allData, setAllData] = useState({});
   const [errors, setErrors] = useState({});
   const [submittedData, setSubmittedData] = useState({});
-
+  const [showLiveData, setShowLiveData] = useState(false);
   // Add new row
   const addRow = () => {
     const newCounter = counter + 1;
@@ -48,6 +48,9 @@ const Form = () => {
       setSubmittedData(allData);
     }
   };
+  const handleFocus = () => {
+  setShowLiveData(true);
+};
 
   return (
    
@@ -61,6 +64,7 @@ const Form = () => {
             row={row}
             deleteRow={() => deleteRow(row.id)}
             updateData={(id, data) => handleDataChange(id, data)}
+             onFocusInput={handleFocus} 
             errors={errors[row.id] || {}}
           />
         ))}
@@ -82,17 +86,19 @@ const Form = () => {
       </form>
 
       {/* Live Form Data (Requirement 3) */}
-      <div className="mt-6 border-t border-gray-300 pt-4">
-        <h2 className="text-xl font-semibold text-gray-700 mb-2">Live Form Data :</h2>
-        {rows.map((row) => {
-          const data = allData[row.id] || {};
-          return (
-            <h3 key={row.id} className="text-lg text-gray-600">
-              Row {row.id} : Name : {data.name || ""}, Role : {data.role || ""}
-            </h3>
-          );
-        })}
-      </div>
+     {showLiveData && (
+  <div className="mt-6 border-t border-gray-300 pt-4">
+    <h2 className="text-xl font-semibold text-gray-700 mb-2">Live Form Data :</h2>
+    {rows.map((row) => {
+      const data = allData[row.id] || {};
+      return (
+        <h3 key={row.id} className="text-lg text-gray-600">
+          Row {row.id} : Name : {data.name || ""}, Role : {data.role || ""}
+        </h3>
+      );
+    })}
+  </div>
+)}
 
       {/* Submitted Form Data Table (Requirement 8) */}
       {Object.keys(submittedData).length > 0 && (

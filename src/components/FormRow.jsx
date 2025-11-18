@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function FormRow({ deleteRow, row, updateData, errors }) {
+export default function FormRow({ deleteRow, row, updateData, errors ,onFocusInput}) {
   const [formData, setFormData] = useState({
     name: "",
     role: "",
@@ -22,6 +22,7 @@ export default function FormRow({ deleteRow, row, updateData, errors }) {
           type="text"
           value={formData.name}
           onChange={(e) => handleChange("name", e.target.value)}
+           onFocus={onFocusInput} 
           placeholder="Enter Name"
           className="border border-gray-300 p-2 rounded-md flex-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
         />
@@ -29,6 +30,7 @@ export default function FormRow({ deleteRow, row, updateData, errors }) {
         <select
           value={formData.role}
           onChange={(e) => handleChange("role", e.target.value)}
+           onFocus={onFocusInput} 
           className="border border-gray-300  p-2 rounded flex-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
         >
           <option value="">Select Developer</option>
