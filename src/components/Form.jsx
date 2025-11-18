@@ -5,6 +5,7 @@ const Form = () => {
   const [rows, setRows] = useState([{ id: 0 }]);
   const [counter, setCounter] = useState(0);
   const [allData, setAllData] = useState({});
+  const [errors, setErrors] = useState({});
   const [submittedData, setSubmittedData] = useState({});
 
   // Add new row
@@ -20,6 +21,10 @@ const Form = () => {
     const newData = { ...allData };
     delete newData[id];
     setAllData(newData);
+
+     const newErrors = { ...errors };
+    delete newErrors[id];
+    setErrors(newErrors);
   };
 
   // Update data from child
@@ -30,7 +35,18 @@ const Form = () => {
   // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmittedData(allData);
+    const newErrors = {};
+
+    rows.forEach((row) => {
+      const data = allData[row.id] || {};
+      if (!data.name) newErrors[row.id] = { ...(newErrors[row.id] || {}), name: "Name is required" };
+      if (!data.role) newErrors[row.id] = { ...(newErrors[row.id] || {}), role: "Role is required" };  
+  })
+    setErrors(newErrors);
+
+      if (Object.keys(newErrors).length === 0) {
+      setSubmittedData(allData);
+    }
   };
 
   return (
@@ -44,6 +60,7 @@ const Form = () => {
             row={row}
             deleteRow={() => deleteRow(row.id)}
             updateData={(data) => handleDataChange(row.id, data)}
+            errors={errors[row.id] || {}}
           />
         ))}
 
