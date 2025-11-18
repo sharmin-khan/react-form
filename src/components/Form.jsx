@@ -18,7 +18,7 @@ const Form = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-4 border rounded bg-white">
+    <div className="max-w-4xl mx-auto mt-10 p-4 border rounded bg-white">
       <h1 className="text-xl font-bold mb-4">Simple Form</h1>
       <form>
         {rows.map((row) => (
