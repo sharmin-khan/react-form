@@ -54,7 +54,8 @@ const Form = () => {
 
   return (
    
-    <div className="max-w-3xl mx-auto mt-10 p-4 border border-gray-300 rounded bg-white">
+   <div className="min-h-screen flex items-center justify-center bg-gray-100">
+     <div className="max-w-3xl w-full p-4 border border-gray-300 rounded bg-white">
       <h1 className="text-3xl font-semibold text-gray-700 mb-4">Simple Form</h1>
 
       <form onSubmit={handleSubmit}>
@@ -125,6 +126,7 @@ const Form = () => {
         </div>
       )}
     </div>
+   </div>
     
   );
 };
