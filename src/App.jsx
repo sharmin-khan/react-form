@@ -1,10 +1,10 @@
 import React from "react";
-import Form from "./components/form";
+import Form from "./components/form/Form";
 
 const App = () => {
   return (
     <>
-      <Form />
+  <Form/>
     </>
   );
 };
