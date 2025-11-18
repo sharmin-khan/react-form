@@ -50,8 +50,9 @@ const Form = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-4 border rounded bg-white">
-      <h1 className="text-xl font-bold mb-4">Simple Form</h1>
+   
+    <div className="max-w-3xl mx-auto mt-10 p-4 border border-gray-300 rounded bg-white">
+      <h1 className="text-3xl font-semibold text-gray-700 mb-4">Simple Form</h1>
 
       <form onSubmit={handleSubmit}>
         {rows.map((row) => (
@@ -59,7 +60,7 @@ const Form = () => {
             key={row.id}
             row={row}
             deleteRow={() => deleteRow(row.id)}
-            updateData={(data) => handleDataChange(row.id, data)}
+            updateData={(id, data) => handleDataChange(id, data)}
             errors={errors[row.id] || {}}
           />
         ))}
@@ -67,27 +68,27 @@ const Form = () => {
         <button
           type="button"
           onClick={addRow}
-          className="bg-green-500 text-white px-3 py-1 rounded mt-2 cursor-pointer"
+          className="bg-green-500 hover:bg-green-600  text-white text-lg font-extrabold px-3 py-1 rounded mt-2 cursor-pointer"
         >
-          + Add
+          + 
         </button>
 
         <button
           type="submit"
-          className="bg-blue-500 text-white px-3 py-1 rounded mt-2 ml-2 cursor-pointer"
+          className="bg-blue-500 hover:bg-blue-600  text-white text-lg font-medium px-3 py-1 rounded mt-2 ml-2 cursor-pointer"
         >
           Submit
         </button>
       </form>
 
       {/* Live Form Data (Requirement 3) */}
-      <div className="mt-6 border-t pt-4">
-        <h2 className="text-lg font-semibold mb-2">Live Form Data:</h2>
+      <div className="mt-6 border-t border-gray-300 pt-4">
+        <h2 className="text-xl font-semibold text-gray-700 mb-2">Live Form Data :</h2>
         {rows.map((row) => {
           const data = allData[row.id] || {};
           return (
-            <h3 key={row.id}>
-              Row {row.id}: Name: {data.name || ""}, Role: {data.role || ""}
+            <h3 key={row.id} className="text-lg text-gray-600">
+              Row {row.id} : Name : {data.name || ""}, Role : {data.role || ""}
             </h3>
           );
         })}
@@ -96,21 +97,21 @@ const Form = () => {
       {/* Submitted Form Data Table (Requirement 8) */}
       {Object.keys(submittedData).length > 0 && (
         <div className="mt-6">
-          <h2 className="text-lg font-semibold mb-2">Submitted Form Data</h2>
-          <table className="table-auto border-collapse border border-gray-400 w-full">
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">Submitted Form Data</h2>
+          <table className="table-auto border-collapse border border-gray-300  w-full">
             <thead>
               <tr>
-                <th className="border px-2 py-1">Row</th>
-                <th className="border px-2 py-1">Name</th>
-                <th className="border px-2 py-1">Role</th>
+                <th className="border border-gray-300 px-2 py-1 text-gray-600">Row</th>
+                <th className="border border-gray-300 px-2 py-1 text-gray-600">Name</th>
+                <th className="border border-gray-300 px-2 py-1 text-gray-600">Role</th>
               </tr>
             </thead>
             <tbody>
               {Object.entries(submittedData).map(([id, data]) => (
                 <tr key={id}>
-                  <td className="border px-2 py-1">{id}</td>
-                  <td className="border px-2 py-1">{data.name}</td>
-                  <td className="border px-2 py-1">{data.role}</td>
+                  <td className="border border-gray-300 px-2 py-1 text-gray-700">{id}</td>
+                  <td className="border border-gray-300 px-2 py-1 text-gray-700">{data.name}</td>
+                  <td className="border border-gray-300 px-2 py-1 text-gray-700">{data.role}</td>
                 </tr>
               ))}
             </tbody>
@@ -118,6 +119,7 @@ const Form = () => {
         </div>
       )}
     </div>
+    
   );
 };
 

@@ -7,9 +7,9 @@ export default function FormRow({ deleteRow, row, updateData, errors }) {
   });
 
   // Update parent state whenever local state changes
-  useEffect(() => {
-    updateData(formData);
-  }, [formData]);
+ useEffect(() => {
+  updateData(row.id, formData);
+}, [formData]);
 
   const handleChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
@@ -23,13 +23,13 @@ export default function FormRow({ deleteRow, row, updateData, errors }) {
           value={formData.name}
           onChange={(e) => handleChange("name", e.target.value)}
           placeholder="Enter Name"
-          className="border p-2 rounded-md flex-1"
+          className="border border-gray-300 p-2 rounded-md flex-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
         />
 
         <select
           value={formData.role}
           onChange={(e) => handleChange("role", e.target.value)}
-          className="border p-2 rounded flex-1"
+          className="border border-gray-300  p-2 rounded flex-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
         >
           <option value="">Select Developer</option>
           <option value="Frontend Developer">Frontend Developer</option>
@@ -40,7 +40,7 @@ export default function FormRow({ deleteRow, row, updateData, errors }) {
         <button
           type="button"
           onClick={() => deleteRow(row.id)}
-          className="bg-red-500 text-white px-3 py-1 my-2 rounded cursor-pointer"
+          className="bg-red-500 hover:bg-red-600 text-white text-lg font-medium px-3 py-1 my-2 rounded cursor-pointer"
         >
           Delete
         </button>
